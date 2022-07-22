@@ -1,0 +1,22 @@
+{% extends 'article/base.html' %}
+{% block title %}Create Article{% endblock %}
+
+{% block content %}
+<div class="row mt-5">
+    <div class="col"><a href="{% url 'article_index' %}" class="btn btn-primary">Back</a></div>
+    <div class="col-6 card">
+        <div class="card-body">
+            <h5 class="card-title">New Article</h5>
+            <form action="{% url 'article_create' %}" method="POST">
+                {% csrf_token %}
+                <label for="title" class="form-label">Article Title: </label>
+                <input type="text" name="title" class="form-control" required>
+                <label for="content" class="form-label">Article Content: </label>
+                <textarea type="textarea" rows="5" cols="50" name="content" class="form-control mb-2" required></textarea>
+                <input type="submit" class="btn btn-primary" value="Post">
+            </form>
+        </div>
+    </div>
+    <div class="col"></div>
+</div>
+{% endblock %}

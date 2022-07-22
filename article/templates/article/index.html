@@ -1,0 +1,34 @@
+{% extends 'article/base.html' %}
+{% block title %}Article Index{% endblock %}
+
+{% block content %}
+<div class="row mt-5">
+    <div class="col"><a href="{% url 'article_create' %}" class="btn btn-primary">Create New Article</a></div>
+    <div class="col-6 card">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Article Title</th>
+                    <th>Content Snippet</th>
+                    <th>Date Created</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for article in articles %}
+                <tr>
+                    <td><a href="{% url 'article_details' article.id%}">{{ article.title }}</a></td>
+                    <td><a href="{% url 'article_details' article.id%}">{{ article.content|slice:":10" }}</a></td>
+                    <td>{{ article.pub_date }}</td>
+                    <td><a href="{% url 'article_edit' article.id %}">Edit</a> <a href="{% url 'article_delete' article.id %}">Delete</a></td>
+                </tr>
+                {% empty %}
+                    <caption>There are currently no articles</caption>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    <div class="col"></div>
+</div>
+{% endblock %}

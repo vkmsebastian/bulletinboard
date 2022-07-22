@@ -1,0 +1,16 @@
+{% extends 'article/base.html' %}
+{% block title %}Article Details{% endblock %}
+
+{% block content %}
+<div class="row mt-5">
+    <div class="col"><a href="{% url 'article_index' %}" class="btn btn-primary">Back</a></div>
+    <div class="col-6 card">
+        <div class="card-header">{{ article.title }}</div>
+        <div class="card-body">
+            <div class="card-text">{{ article.content }}</div>
+        </div>
+        <div class="card-footer text-muted">{{ article.pub_date }}</div>
+    </div>
+    <div class="col"></div>
+</div>
+{% endblock %}
